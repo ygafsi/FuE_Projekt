@@ -1,0 +1,24 @@
+[0.670s] Invoking command in '/home/robot/ros2_ws/src/screwdriver_driver': PYTHONPATH=/home/robot/ros2_ws/build/screwdriver_driver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/ros2_ws/install/screwdriver_driver/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/screwdriver_driver build --build-base /home/robot/ros2_ws/build/screwdriver_driver/build install --record /home/robot/ros2_ws/build/screwdriver_driver/install.log --single-version-externally-managed install_data
+[0.903s] running egg_info
+[0.920s] writing ../../build/screwdriver_driver/screwdriver_driver.egg-info/PKG-INFO
+[0.920s] writing dependency_links to ../../build/screwdriver_driver/screwdriver_driver.egg-info/dependency_links.txt
+[0.920s] writing entry points to ../../build/screwdriver_driver/screwdriver_driver.egg-info/entry_points.txt
+[0.920s] writing requirements to ../../build/screwdriver_driver/screwdriver_driver.egg-info/requires.txt
+[0.920s] writing top-level names to ../../build/screwdriver_driver/screwdriver_driver.egg-info/top_level.txt
+[0.955s] reading manifest file '../../build/screwdriver_driver/screwdriver_driver.egg-info/SOURCES.txt'
+[0.955s] writing manifest file '../../build/screwdriver_driver/screwdriver_driver.egg-info/SOURCES.txt'
+[0.955s] running build
+[0.956s] running build_py
+[0.956s] copying screwdriver_driver/kl_tcg_driver.py -> /home/robot/ros2_ws/build/screwdriver_driver/build/lib/screwdriver_driver
+[0.956s] running install
+[0.961s] running install_lib
+[0.978s] copying /home/robot/ros2_ws/build/screwdriver_driver/build/lib/screwdriver_driver/kl_tcg_driver.py -> /home/robot/ros2_ws/install/screwdriver_driver/lib/python3.12/site-packages/screwdriver_driver
+[0.978s] byte-compiling /home/robot/ros2_ws/install/screwdriver_driver/lib/python3.12/site-packages/screwdriver_driver/kl_tcg_driver.py to kl_tcg_driver.cpython-312.pyc
+[0.980s] running install_data
+[0.980s] running install_egg_info
+[0.997s] removing '/home/robot/ros2_ws/install/screwdriver_driver/lib/python3.12/site-packages/screwdriver_driver-0.0.0-py3.12.egg-info' (and everything under it)
+[0.997s] Copying ../../build/screwdriver_driver/screwdriver_driver.egg-info to /home/robot/ros2_ws/install/screwdriver_driver/lib/python3.12/site-packages/screwdriver_driver-0.0.0-py3.12.egg-info
+[0.998s] running install_scripts
+[1.116s] Installing kl_tcg_driver script to /home/robot/ros2_ws/install/screwdriver_driver/lib/screwdriver_driver
+[1.116s] writing list of installed files to '/home/robot/ros2_ws/build/screwdriver_driver/install.log'
+[1.160s] Invoked command in '/home/robot/ros2_ws/src/screwdriver_driver' returned '0': PYTHONPATH=/home/robot/ros2_ws/build/screwdriver_driver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/ros2_ws/install/screwdriver_driver/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/screwdriver_driver build --build-base /home/robot/ros2_ws/build/screwdriver_driver/build install --record /home/robot/ros2_ws/build/screwdriver_driver/install.log --single-version-externally-managed install_data

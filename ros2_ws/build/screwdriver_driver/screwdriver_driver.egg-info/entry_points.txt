@@ -1,0 +1,2 @@
+[console_scripts]
+kl_tcg_driver = screwdriver_driver.kl_tcg_driver:main
