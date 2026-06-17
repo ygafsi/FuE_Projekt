@@ -11,6 +11,10 @@ setup.py
 resource/screwdriver_driver
 screwdriver_driver/__init__.py
 screwdriver_driver/kl_tcg_driver.py
-test/test_copyright.py
-test/test_flake8.py
-test/test_pep257.py
+screwdriver_driver.egg-info/PKG-INFO
+screwdriver_driver.egg-info/SOURCES.txt
+screwdriver_driver.egg-info/dependency_links.txt
+screwdriver_driver.egg-info/entry_points.txt
+screwdriver_driver.egg-info/requires.txt
+screwdriver_driver.egg-info/top_level.txt
+screwdriver_driver.egg-info/zip-safe
