@@ -1,0 +1,35 @@
+running egg_info
+creating ../../build/screwdriver_driver/screwdriver_driver.egg-info
+writing ../../build/screwdriver_driver/screwdriver_driver.egg-info/PKG-INFO
+writing dependency_links to ../../build/screwdriver_driver/screwdriver_driver.egg-info/dependency_links.txt
+writing entry points to ../../build/screwdriver_driver/screwdriver_driver.egg-info/entry_points.txt
+writing requirements to ../../build/screwdriver_driver/screwdriver_driver.egg-info/requires.txt
+writing top-level names to ../../build/screwdriver_driver/screwdriver_driver.egg-info/top_level.txt
+writing manifest file '../../build/screwdriver_driver/screwdriver_driver.egg-info/SOURCES.txt'
+reading manifest file '../../build/screwdriver_driver/screwdriver_driver.egg-info/SOURCES.txt'
+writing manifest file '../../build/screwdriver_driver/screwdriver_driver.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/robot/ros2_ws/build/screwdriver_driver/build
+creating /home/robot/ros2_ws/build/screwdriver_driver/build/lib
+creating /home/robot/ros2_ws/build/screwdriver_driver/build/lib/screwdriver_driver
+copying screwdriver_driver/__init__.py -> /home/robot/ros2_ws/build/screwdriver_driver/build/lib/screwdriver_driver
+copying screwdriver_driver/kl_tcg_driver.py -> /home/robot/ros2_ws/build/screwdriver_driver/build/lib/screwdriver_driver
+running install
+running install_lib
+creating /home/robot/ros2_ws/install/screwdriver_driver/lib/python3.12/site-packages/screwdriver_driver
+copying /home/robot/ros2_ws/build/screwdriver_driver/build/lib/screwdriver_driver/__init__.py -> /home/robot/ros2_ws/install/screwdriver_driver/lib/python3.12/site-packages/screwdriver_driver
+copying /home/robot/ros2_ws/build/screwdriver_driver/build/lib/screwdriver_driver/kl_tcg_driver.py -> /home/robot/ros2_ws/install/screwdriver_driver/lib/python3.12/site-packages/screwdriver_driver
+byte-compiling /home/robot/ros2_ws/install/screwdriver_driver/lib/python3.12/site-packages/screwdriver_driver/__init__.py to __init__.cpython-312.pyc
+byte-compiling /home/robot/ros2_ws/install/screwdriver_driver/lib/python3.12/site-packages/screwdriver_driver/kl_tcg_driver.py to kl_tcg_driver.cpython-312.pyc
+running install_data
+creating /home/robot/ros2_ws/install/screwdriver_driver/share/ament_index
+creating /home/robot/ros2_ws/install/screwdriver_driver/share/ament_index/resource_index
+creating /home/robot/ros2_ws/install/screwdriver_driver/share/ament_index/resource_index/packages
+copying resource/screwdriver_driver -> /home/robot/ros2_ws/install/screwdriver_driver/share/ament_index/resource_index/packages
+copying package.xml -> /home/robot/ros2_ws/install/screwdriver_driver/share/screwdriver_driver
+running install_egg_info
+Copying ../../build/screwdriver_driver/screwdriver_driver.egg-info to /home/robot/ros2_ws/install/screwdriver_driver/lib/python3.12/site-packages/screwdriver_driver-0.0.0-py3.12.egg-info
+running install_scripts
+Installing kl_tcg_driver script to /home/robot/ros2_ws/install/screwdriver_driver/lib/screwdriver_driver
+writing list of installed files to '/home/robot/ros2_ws/build/screwdriver_driver/install.log'

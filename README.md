@@ -6,25 +6,37 @@ Depuis le dossier du projet :
 
 ```bash
 cd ~/fue_projekt
-./start_docker_original.sh
+./start_docker_driver.sh
 ```
 
 Si problème de droits Docker :
 
 ```bash
-sudo ./start_docker_original.sh
+sudo ./start_docker_driver.sh
 ```
-
-
-
-
 cd /home/robot/ros2_ws
 colcon build
 source install/setup.bash
 ros2 run screwdriver_driver kl_tcg_driver
 
+Terminal 1
+cd /home/robot/scripts
+./build.sh
+./run_driver.sh
 
 
+Terminal 2
+cd ~/fue_projekt
+docker exec -it ros2_bachelor bash
+
+apres
+
+cd /home/robot/scripts
+./monitor.sh
+
+chmod +x /home/robot/scripts/monitor.sh
+cd /home/robot/scripts
+./monitor.sh
 
 
 
