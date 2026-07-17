@@ -1,0 +1,34 @@
+kl_tcg_driver:
+  ros__parameters:
+    target_job: 20
+    target_sequence: 1
+
+    step_number: 20
+    step_name: "ROS020"
+    step_speed_rpm: 300
+    step_direction: 0
+    step_turns: 5.0
+    step_torque_nm: 1.0
+    step_delay_s: 0.8
+
+    program_number: 20
+    program_name: "ROS020"
+    program_step_1: 20
+    program_step_2: 0
+    program_step_3: 0
+    program_step_4: 0
+    program_step_5: 0
+    program_okall_time_s: 1.0
+    program_ok_time_s: 1.0
+    program_okall_stop: 0
+    program_ng_stop: 0
+
+    job_number: 20
+    job_sequence_1_program: 20
+    job_sequence_1_repeat: 1
+    job_reverse_direction: 0
+    job_reverse_force: 5
+    job_reverse_speed_rpm: 300
+
+    read_select: 1
+    read_number: 20

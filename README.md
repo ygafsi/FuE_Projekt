@@ -1,196 +1,327 @@
-# FuE Projekt - Progression actuelle
+syntax
+python3 -m py_compile \
+/home/robot/ros2_ws/src/screwdriver_driver/screwdriver_driver/kl_tcg_driver.py
 
-## 1. Construction du Docker
+trigger a program
 
-Depuis le dossier du projet :
+ros2 service call /screwdriver/execute_job std_srvs/srv/Trigger
+
+# FuE Project – KL-TCG ROS2 Driver
+
+This document describes how to build, launch and test the current ROS2 driver for the KILEWS KL-TCG controller.
+
+The current implementation supports:
+
+- Serial communication with the KL-TCG controller (RS232)
+- Controller state monitoring
+- Final tightening result monitoring
+- Reading controller configuration
+- Reading tool status
+- Selecting an existing Job and Sequence
+
+---
+
+# 1. Start the Docker Container
+
+From the host machine:
 
 ```bash
 cd ~/fue_projekt
 ./start_docker_driver.sh
 ```
 
-Si problème de droits Docker :
+If the container is already running:
 
 ```bash
-sudo ./start_docker_driver.sh
-```
-cd /home/robot/ros2_ws
-colcon build
-source install/setup.bash
-ros2 run screwdriver_driver kl_tcg_driver
-
-Terminal 1
-cd /home/robot/scripts
-./build.sh
-./run_driver.sh
-
-
-Terminal 2
-cd ~/fue_projekt
 docker exec -it ros2_bachelor bash
-
-apres
-
-cd /home/robot/scripts
-./monitor.sh
-
-chmod +x /home/robot/scripts/monitor.sh
-cd /home/robot/scripts
-./monitor.sh
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
 
 ---
 
-## 2. Vérification ROS2
+# 2. Build and Launch the Driver
 
-Dans le container :
+## Terminal 1 (inside Docker)
 
 ```bash
-cd /home/robot/ros2_ws
+cd /home/robot/scripts
 
-colcon build
+./build.sh
+./run_driver.sh
+```
 
-source install/setup.bash
+The driver should print:
+
+```text
+Connected to KL-TCG on /dev/ttyUSB0 at 115200 baud
+```
+
+---
+
+# 3. Open the Monitoring Window
+
+## Terminal 2
+
+From the host:
+
+```bash
+docker exec -it ros2_bachelor bash
+```
+
+Inside Docker:
+
+```bash
+cd /home/robot/scripts
+
+./monitor.sh
+```
+
+The monitoring window displays:
+
+- Controller State
+- Last Tightening Result
+
+---
+
+# 4. Available Topics
+
+```bash
+source /home/robot/ros2_ws/install/setup.bash
 
 ros2 topic list
 ```
 
-Résultat obtenu :
+Main topics:
 
 ```text
-/parameter_events
-/rosout
+/screwdriver/state
+/screwdriver/result
+/screwdriver/raw_frame
+/screwdriver/events
 ```
 
 ---
 
-## 3. Création du package ROS2
+# 5. Available Services
 
 ```bash
-cd /home/robot/ros2_ws/src
-
-ros2 pkg create screwdriver_driver \
-  --build-type ament_python \
-  --dependencies rclpy std_msgs
+ros2 service list
 ```
 
----
-
-## 4. Compilation du package
-
-```bash
-cd /home/robot/ros2_ws
-
-colcon build
-
-source install/setup.bash
-```
-
----
-
-## 5. Création du premier node
-
-Fichier créé :
+Implemented services:
 
 ```text
-ros2_ws/src/screwdriver_driver/screwdriver_driver/kl_tcg_driver.py
-```
-
-Node de test :
-
-* publie sur `/screwdriver/status`
-* envoie le message `driver alive`
-
----
-
-## 6. Modification de setup.py
-
-Ajout :
-
-```python
-'kl_tcg_driver = screwdriver_driver.kl_tcg_driver:main'
+/screwdriver/read_controller_config
+/screwdriver/read_tool_status
+/screwdriver/execute_job
 ```
 
 ---
 
-## 7. Lancement du node
+# 6. Read Controller Configuration
 
 ```bash
-ros2 run screwdriver_driver kl_tcg_driver
+ros2 service call \
+/screwdriver/read_controller_config \
+std_srvs/srv/Trigger
 ```
 
-Résultat obtenu :
+Monitor the communication:
+
+```bash
+ros2 topic echo /screwdriver/events --field data
+```
+
+Expected output:
 
 ```text
-[INFO] [....] [kl_tcg_driver]: KL-TCG driver node started
+Sent command: {CMD108,...}
+Controller answer: ANS108 ...
 ```
 
 ---
 
-## 8. Vérification du topic
-
-Dans un deuxième terminal :
+# 7. Read Tool Status
 
 ```bash
-sudo docker exec -it ros2_bachelor bash
-
-source /home/robot/ros2_ws/install/setup.bash
-
-ros2 topic echo /screwdriver/status
+ros2 service call \
+/screwdriver/read_tool_status \
+std_srvs/srv/Trigger
 ```
 
-Résultat :
+---
+
+# 8. Select a Job
+
+The desired Job and Sequence are stored as ROS2 parameters.
+
+Default values:
 
 ```text
-data: driver alive
+Job      = 1
+Sequence = 1
 ```
 
----
-
-## 9. Installation de pyserial
+Change the parameters:
 
 ```bash
-sudo apt update
-
-sudo apt install -y python3-serial
+ros2 param set /kl_tcg_driver target_job 1
+ros2 param set /kl_tcg_driver target_sequence 1
 ```
 
-Ajout également dans le Dockerfile :
+Then transmit the selection to the controller:
 
-```dockerfile
-python3-pip \
-python3-serial && \
+```bash
+ros2 service call \
+/screwdriver/execute_job \
+std_srvs/srv/Trigger
+```
+
+Monitor the communication:
+
+```bash
+ros2 topic echo /screwdriver/events --field data
+```
+
+Expected output:
+
+```text
+Sent command: {CMD104,...}
+Controller answer: ANS104 ...
+```
+
+> **Note**
+>
+> `CMD104` only selects an existing Job and Sequence.
+>
+> It does **not** start the screwdriver.
+
+---
+
+# 9. Check the Current Controller State
+
+```bash
+ros2 topic echo /screwdriver/state --field data
+```
+
+Example:
+
+```text
+STATE
+-----
+Controller : connected
+Tool       : connected
+Enabled    : yes
+Mode       : STD
+
+Job/Seq/TP : 01/01/01
+
+Screws     : 01/05
+
+Stop       : 0 (none)
+```
+
+> Depending on the controller firmware, the displayed Job may update after the next tightening cycle.
+
+---
+
+# 10. Read the Last Tightening Result
+
+```bash
+ros2 topic echo /screwdriver/result --field data
+```
+
+Example:
+
+```text
+LAST RESULT
+-----------
+Result     : OK
+Torque     : 0.302 N.m
+Time       : 0.578 s
+Rotations  : 5.0
+Cycle Nr.  : 78
 ```
 
 ---
 
-## État actuel
+# 11. Debugging
 
-Le driver ROS2 fonctionne.
+## Show Raw Serial Frames
 
-Prochaine étape :
+```bash
+ros2 topic echo /screwdriver/raw_frame --field data
+```
 
-Connexion RS232 avec le contrôleur KL-TCG et lecture des premières trames.
+This topic displays every telegram received from the controller.
+
+---
+
+## Show Driver Events
+
+```bash
+ros2 topic echo /screwdriver/events --field data
+```
+
+This topic displays:
+
+- transmitted commands
+- controller responses
+- serial communication errors
+
+---
+
+# 12. Stop the Driver
+
+Stop the node:
+
+```text
+Ctrl + C
+```
+
+Leave the container:
+
+```bash
+exit
+```
+
+---
+
+# Troubleshooting
+
+## Check if another driver is running
+
+```bash
+ps aux | grep kl_tcg_driver
+```
+
+Only the `grep` process should appear.
+
+---
+
+## Check whether the serial port is free (host machine)
+
+```bash
+sudo fuser -v /dev/ttyUSB0
+```
+
+No process should be using the device.
+
+---
+
+# Current Driver Capabilities
+
+The current implementation supports:
+
+- RS232 communication with the KL-TCG controller
+- Decoding of `REQ100` (controller state)
+- Decoding of `DATA100` (final tightening result)
+- Reading controller configuration (`CMD108`)
+- Reading tool status (`CMD116`)
+- Selecting an existing Job and Sequence (`CMD104`)
+
+The current implementation does **not** yet support:
+
+- Writing Tightening Steps (TS)
+- Writing Tightening Programs (TP)
+- Creating or modifying Jobs
+- Starting the screwdriver by software (requires the hardware trigger CN1/CN2)

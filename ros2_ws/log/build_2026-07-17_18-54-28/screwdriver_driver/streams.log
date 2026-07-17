@@ -1,0 +1,19 @@
+[0.695s] Invoking command in '/home/robot/ros2_ws/build/screwdriver_driver': PYTHONPATH=/home/robot/ros2_ws/build/screwdriver_driver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/ros2_ws/install/screwdriver_driver/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/robot/ros2_ws/build/screwdriver_driver/build --no-deps symlink_data
+[0.987s] running develop
+[1.182s] running egg_info
+[1.199s] writing screwdriver_driver.egg-info/PKG-INFO
+[1.199s] writing dependency_links to screwdriver_driver.egg-info/dependency_links.txt
+[1.199s] writing entry points to screwdriver_driver.egg-info/entry_points.txt
+[1.199s] writing requirements to screwdriver_driver.egg-info/requires.txt
+[1.199s] writing top-level names to screwdriver_driver.egg-info/top_level.txt
+[1.237s] reading manifest file 'screwdriver_driver.egg-info/SOURCES.txt'
+[1.238s] writing manifest file 'screwdriver_driver.egg-info/SOURCES.txt'
+[1.255s] running build_ext
+[1.255s] Creating /home/robot/ros2_ws/install/screwdriver_driver/lib/python3.12/site-packages/screwdriver-driver.egg-link (link to .)
+[1.256s] Installing kl_tcg_driver script to /home/robot/ros2_ws/install/screwdriver_driver/lib/screwdriver_driver
+[1.256s] 
+[1.256s] Installed /home/robot/ros2_ws/build/screwdriver_driver
+[1.256s] running symlink_data
+[1.256s] creating /home/robot/ros2_ws/install/screwdriver_driver/share/screwdriver_driver/config
+[1.257s] symbolically linking /home/robot/ros2_ws/build/screwdriver_driver/config/screwdriver_config.yaml -> /home/robot/ros2_ws/install/screwdriver_driver/share/screwdriver_driver/config
+[1.282s] Invoked command in '/home/robot/ros2_ws/build/screwdriver_driver' returned '0': PYTHONPATH=/home/robot/ros2_ws/build/screwdriver_driver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/robot/ros2_ws/install/screwdriver_driver/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/robot/ros2_ws/build/screwdriver_driver/build --no-deps symlink_data

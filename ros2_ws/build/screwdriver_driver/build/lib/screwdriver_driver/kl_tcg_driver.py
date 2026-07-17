@@ -209,15 +209,15 @@ class KLTcgDriver(Node):
         try:
             fastening_time = self.to_float(fields[1])
             torque = self.to_float(fields[2])
+            
+            live = (
+                "LIVE TORQUE\n"
+                "-----------\n"
+                f"Torque : {torque:.4f} Nm\n"
+                f"Time   : {fastening_time:.3f} s"
+            )
 
-            if torque > 0.01:
-                live = (
-                    "LIVE TORQUE\n"
-                    "-----------\n"
-                    f"Torque : {torque:.3f} Nm\n"
-                    f"Time   : {fastening_time:.3f} s"
-                )
-                self.publish_string(self.live_torque_pub, live, log=False)
+            self.publish_string(self.live_torque_pub, live, log=False)
 
         except (IndexError, ValueError):
             self.publish_event(f"Could not decode DATA101 frame: {raw_line}")

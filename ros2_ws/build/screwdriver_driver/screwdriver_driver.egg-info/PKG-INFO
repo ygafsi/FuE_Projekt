@@ -1,8 +1,7 @@
 Metadata-Version: 2.1
 Name: screwdriver-driver
 Version: 0.0.0
-Summary: TODO: Package description
+Summary: ROS2 driver for the KILEWS KL-TCG controller
 Maintainer: robot
-Maintainer-email: robot@todo.todo
-License: TODO: License declaration
-Provides-Extra: test
+Maintainer-email: robot@example.com
+License: Apache-2.0

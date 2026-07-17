@@ -1,0 +1,17 @@
+running develop
+running egg_info
+writing screwdriver_driver.egg-info/PKG-INFO
+writing dependency_links to screwdriver_driver.egg-info/dependency_links.txt
+writing entry points to screwdriver_driver.egg-info/entry_points.txt
+writing requirements to screwdriver_driver.egg-info/requires.txt
+writing top-level names to screwdriver_driver.egg-info/top_level.txt
+reading manifest file 'screwdriver_driver.egg-info/SOURCES.txt'
+writing manifest file 'screwdriver_driver.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/robot/ros2_ws/install/screwdriver_driver/lib/python3.12/site-packages/screwdriver-driver.egg-link (link to .)
+Installing kl_tcg_driver script to /home/robot/ros2_ws/install/screwdriver_driver/lib/screwdriver_driver
+
+Installed /home/robot/ros2_ws/build/screwdriver_driver
+running symlink_data
+creating /home/robot/ros2_ws/install/screwdriver_driver/share/screwdriver_driver/config
+symbolically linking /home/robot/ros2_ws/build/screwdriver_driver/config/screwdriver_config.yaml -> /home/robot/ros2_ws/install/screwdriver_driver/share/screwdriver_driver/config
